@@ -14,4 +14,6 @@ offset_bottom = 108.0
 grow_horizontal = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_qacdv")
+theme_override_font_sizes/font_size = 32
+clip_text = true
 script = ExtResource("2_7cinx")
