@@ -1,0 +1,93 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4exfcco5gome"]
+
+[ext_resource type="Script" uid="uid://cap1241p2g0v6" path="res://start_menu.gd" id="1_7htnq"]
+[ext_resource type="Theme" uid="uid://dlxjiwsk6r3y5" path="res://themes/header.tres" id="1_ufv5y"]
+[ext_resource type="Theme" uid="uid://fx8rk3uqw885" path="res://themes/big_button.tres" id="3_0d5ky"]
+[ext_resource type="Theme" uid="uid://xyo7pwdpgfku" path="res://themes/text.tres" id="3_7htnq"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7htnq")
+
+[node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 216)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("1_ufv5y")
+text = "Welcome to the Multicards Arcade"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 108)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 108.0
+offset_bottom = 216.0
+grow_horizontal = 2
+theme = ExtResource("3_7htnq")
+text = "A collection of games for Multicards sets"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 324)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -432.0
+offset_bottom = -108.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Button2" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(324, 324)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("3_0d5ky")
+disabled = true
+text = "Singleplayer"
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(324, 324)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("3_0d5ky")
+text = "Classic"
+
+[node name="Button3" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(324, 324)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("3_0d5ky")
+disabled = true
+text = "Multiplayer"
+
+[node name="LinkButton" type="LinkButton" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -225.5
+offset_top = -41.0
+offset_right = 225.5
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("3_7htnq")
+text = "Check out Multicards, the app!"
+uri = "https:multicards.phyotp.dev"

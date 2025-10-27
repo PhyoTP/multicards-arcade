@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://xyo7pwdpgfku"]
+
+[ext_resource type="FontFile" uid="uid://d00glbm5ikg4h" path="res://fonts/AvenirNextRoundedStd-Med.ttf" id="1_7pmjw"]
+
+[resource]
+default_font = ExtResource("1_7pmjw")
+default_font_size = 32

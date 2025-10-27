@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcw6yoamrhg2m"]
+
+[ext_resource type="Theme" uid="uid://fx8rk3uqw885" path="res://themes/big_button.tres" id="1_qacdv"]
+[ext_resource type="Script" uid="uid://gdd77afm26vr" path="res://list_button.gd" id="2_7cinx"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(1044, 108)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -522.0
+offset_right = 522.0
+offset_bottom = 108.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_qacdv")
+script = ExtResource("2_7cinx")
