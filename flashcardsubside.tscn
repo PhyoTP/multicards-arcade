@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd5piprqwmwj4"]
+
+[ext_resource type="Theme" uid="uid://xyo7pwdpgfku" path="res://themes/text.tres" id="1_sbg03"]
+
+[node name="VBoxContainer" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Side"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+theme = ExtResource("1_sbg03")
+text = "Value"
+horizontal_alignment = 1
+autowrap_mode = 3
