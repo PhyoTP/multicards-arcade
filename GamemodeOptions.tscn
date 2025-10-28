@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c84t6ph516mtp"]
+[gd_scene load_steps=5 format=3 uid="uid://c84t6ph516mtp"]
 
 [ext_resource type="Script" uid="uid://d00wlioymk0sn" path="res://gamemode_options.gd" id="1_8twda"]
 [ext_resource type="Theme" uid="uid://dlxjiwsk6r3y5" path="res://themes/header.tres" id="1_may5p"]
+[ext_resource type="Theme" uid="uid://xyo7pwdpgfku" path="res://themes/text.tres" id="3_8twda"]
+[ext_resource type="Theme" uid="uid://fx8rk3uqw885" path="res://themes/big_button.tres" id="4_vntr2"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -20,7 +22,7 @@ anchor_right = 1.0
 offset_bottom = 23.0
 grow_horizontal = 2
 theme = ExtResource("1_may5p")
-text = "Flashcards Options"
+text = "Flashcards"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -33,6 +35,40 @@ anchor_right = 1.0
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-scroll_offset = Vector2(0, -216)
+right_disconnects = true
+minimap_enabled = false
+show_menu = false
 
 [node name="HTTPRequest" type="HTTPRequest" parent="."]
+
+[node name="Label2" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 108)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 108.0
+offset_bottom = 216.0
+grow_horizontal = 2
+theme = ExtResource("3_8twda")
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 216)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -216.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(162, 162)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("4_vntr2")
+text = "Play"

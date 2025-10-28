@@ -54,27 +54,31 @@ theme_override_constants/separation = 50
 alignment = 1
 
 [node name="Button2" type="Button" parent="HBoxContainer"]
-custom_minimum_size = Vector2(324, 324)
+custom_minimum_size = Vector2(216, 216)
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("3_0d5ky")
 disabled = true
-text = "Singleplayer"
+text = "Single-player"
+autowrap_mode = 3
+clip_text = true
 
 [node name="Button" type="Button" parent="HBoxContainer"]
-custom_minimum_size = Vector2(324, 324)
+custom_minimum_size = Vector2(216, 216)
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("3_0d5ky")
 text = "Classic"
 
 [node name="Button3" type="Button" parent="HBoxContainer"]
-custom_minimum_size = Vector2(324, 324)
+custom_minimum_size = Vector2(216, 216)
 layout_mode = 2
 size_flags_vertical = 4
 theme = ExtResource("3_0d5ky")
 disabled = true
-text = "Multiplayer"
+text = "Multi-player"
+autowrap_mode = 3
+clip_text = true
 
 [node name="LinkButton" type="LinkButton" parent="."]
 layout_mode = 1

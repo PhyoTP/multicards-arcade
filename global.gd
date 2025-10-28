@@ -1,3 +1,3 @@
 extends Node
 
-var gamemode = ""
+var gamemode = "Flashcards"

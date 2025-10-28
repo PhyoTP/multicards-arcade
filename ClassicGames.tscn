@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b4r3gtbisnxab"]
+[gd_scene load_steps=5 format=3 uid="uid://b4r3gtbisnxab"]
 
 [ext_resource type="Script" uid="uid://bxale2nkjbjby" path="res://classic_games.gd" id="1_4ai7l"]
 [ext_resource type="Theme" uid="uid://dlxjiwsk6r3y5" path="res://themes/header.tres" id="1_us0sb"]
 [ext_resource type="Theme" uid="uid://fx8rk3uqw885" path="res://themes/big_button.tres" id="2_4ai7l"]
+[ext_resource type="Theme" uid="uid://xyo7pwdpgfku" path="res://themes/text.tres" id="4_q20wg"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -60,3 +61,16 @@ size_flags_vertical = 4
 theme = ExtResource("2_4ai7l")
 disabled = true
 text = "Write"
+
+[node name="Label2" type="Label" parent="."]
+custom_minimum_size = Vector2(0, 108)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 108.0
+offset_bottom = 216.0
+grow_horizontal = 2
+theme = ExtResource("4_q20wg")
+text = "Choose a gamemode"
+horizontal_alignment = 1
+vertical_alignment = 1
