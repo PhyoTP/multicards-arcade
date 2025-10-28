@@ -2,6 +2,10 @@ extends Control
 @onready var list_button = preload("res://list_button.tscn")
 @onready var status_label = $ScrollContainer/VBoxContainer/StatusLabel
 func _ready():
+	status_label.visible = true
+	for child in $ScrollContainer/VBoxContainer.get_children():
+		if child in get_tree().get_nodes_in_group("list_button"):
+			child.queue_free()
 	$HTTPRequest.request_completed.connect(_on_request_completed)
 	var error = $HTTPRequest.request("https://api.phyotp.dev/multicards/sets")
 	if error != OK:

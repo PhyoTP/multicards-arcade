@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4r3gtbisnxab"]
+[gd_scene load_steps=7 format=3 uid="uid://b4r3gtbisnxab"]
 
 [ext_resource type="Script" uid="uid://bxale2nkjbjby" path="res://classic_games.gd" id="1_4ai7l"]
 [ext_resource type="Theme" uid="uid://dlxjiwsk6r3y5" path="res://themes/header.tres" id="1_us0sb"]
 [ext_resource type="Theme" uid="uid://fx8rk3uqw885" path="res://themes/big_button.tres" id="2_4ai7l"]
 [ext_resource type="Theme" uid="uid://xyo7pwdpgfku" path="res://themes/text.tres" id="4_q20wg"]
+[ext_resource type="PackedScene" uid="uid://bnckqilaoe73s" path="res://back_button.tscn" id="5_apyin"]
+[ext_resource type="Script" uid="uid://d3uflrewg80uk" path="res://back_button.gd" id="6_8qbr6"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -74,3 +76,7 @@ theme = ExtResource("4_q20wg")
 text = "Choose a gamemode"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BackButton" parent="." instance=ExtResource("5_apyin")]
+layout_mode = 0
+script = ExtResource("6_8qbr6")

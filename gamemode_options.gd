@@ -5,25 +5,29 @@ var classic = ["Flashcards"]
 var chosenSides: Dictionary
 var cards: Array
 func _ready() -> void:
+	$StatusLabel.visible = true
 	$Label.text = Global.gamemode
 	var label = Label.new()
 	label.text = "Attach this..."
+	var offset = 0
 	if Global.gamemode in classic:
 		var qFrame = GraphNode.new()
 		qFrame.title = "Front"
 		qFrame.name = "_front"
+		qFrame.position_offset = Vector2(-576, offset)
 		chosenSides["_front"] = []
 		qFrame.add_child(label)
 		qFrame.set_slot(0, false, 0, Color.DARK_ORANGE, true, 0, Color.DARK_ORANGE)
 		$GraphEdit.add_child(qFrame)
+		offset += 64
 		var aFrame = GraphNode.new()
 		aFrame.title = "Back"
 		aFrame.name = "_back"
+		aFrame.position_offset = Vector2(-576, offset)
 		chosenSides["_back"] = []
 		aFrame.set_slot(0, false, 0, Color.DARK_ORANGE, true, 0, Color.DARK_ORANGE)
 		aFrame.add_child(label.duplicate())
 		$GraphEdit.add_child(aFrame)
-	$GraphEdit.arrange_nodes()
 	$HTTPRequest.request_completed.connect(_on_request_completed)
 	$HTTPRequest.request("https://api.phyotp.dev/multicards/set/"+id)
 	$GraphEdit.connection_request.connect(_connect_node)
@@ -45,7 +49,7 @@ func _on_request_completed(_result, response_code, _headers, body):
 					var newNode = GraphNode.new()
 					newNode.title = side
 					newNode.name = side
-					newNode.position_offset = Vector2(576,offset)
+					newNode.position_offset = Vector2(-216,offset)
 					offset+=64
 					newNode.add_child(label.duplicate())
 					newNode.set_slot(0, true, 0, Color.DARK_ORANGE, false, 0, Color.DARK_ORANGE)
@@ -63,9 +67,9 @@ func _start():
 
 	new_scene.chosenSides = chosenSides
 	new_scene.cards = cards
-
+	Global.scene_path.append(self.duplicate())
+	get_tree().current_scene.queue_free()
 	get_tree().root.add_child(new_scene)
-	get_parent().remove_child(self)
-	queue_free()
+	get_tree().current_scene = new_scene
 
 	

@@ -14,5 +14,7 @@ func _reset():
 func _entered():
 	var gamemode_options = options.instantiate()
 	gamemode_options.id = cardSet.id
-	get_tree().root.add_child(gamemode_options)
+	Global.scene_path.append(get_tree().current_scene.duplicate())
 	get_tree().current_scene.queue_free()
+	get_tree().root.add_child(gamemode_options)
+	get_tree().current_scene = gamemode_options

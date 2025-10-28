@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://wcif8ok4jvjr"]
+[gd_scene load_steps=8 format=3 uid="uid://wcif8ok4jvjr"]
 
 [ext_resource type="Theme" uid="uid://fx8rk3uqw885" path="res://themes/big_button.tres" id="1_21x8f"]
 [ext_resource type="Script" uid="uid://bwimc6opbc554" path="res://flashcards.gd" id="1_biq8x"]
 [ext_resource type="Theme" uid="uid://xyo7pwdpgfku" path="res://themes/text.tres" id="2_biq8x"]
 [ext_resource type="Theme" uid="uid://dlxjiwsk6r3y5" path="res://themes/header.tres" id="3_05mbd"]
+[ext_resource type="PackedScene" uid="uid://bnckqilaoe73s" path="res://back_button.tscn" id="5_s0rcw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05mbd"]
 bg_color = Color(0, 1, 0, 1)
@@ -125,10 +126,5 @@ theme = ExtResource("1_21x8f")
 text = "Restart with unknown"
 autowrap_mode = 3
 
-[node name="BackButton" type="Button" parent="."]
-visible = false
+[node name="BackButton" parent="." instance=ExtResource("5_s0rcw")]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
-theme = ExtResource("2_biq8x")
-text = "<Back"
