@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://wcif8ok4jvjr"]
+[gd_scene load_steps=7 format=3 uid="uid://wcif8ok4jvjr"]
 
 [ext_resource type="Theme" uid="uid://fx8rk3uqw885" path="res://themes/big_button.tres" id="1_21x8f"]
 [ext_resource type="Script" uid="uid://bwimc6opbc554" path="res://flashcards.gd" id="1_biq8x"]
 [ext_resource type="Theme" uid="uid://xyo7pwdpgfku" path="res://themes/text.tres" id="2_biq8x"]
 [ext_resource type="Theme" uid="uid://dlxjiwsk6r3y5" path="res://themes/header.tres" id="3_05mbd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_05mbd"]
+bg_color = Color(0, 1, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s0rcw"]
+bg_color = Color(1, 0, 0, 1)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -40,7 +46,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(864, 324)
+custom_minimum_size = Vector2(1152, 324)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -56,17 +62,22 @@ grow_vertical = 0
 theme_override_constants/separation = 108
 alignment = 1
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="KnowButton" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(216, 216)
 layout_mode = 2
-text = "hello"
+size_flags_vertical = 4
+theme = ExtResource("2_biq8x")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_05mbd")
+text = "Know"
 
-[node name="Button" type="Button" parent="HBoxContainer"]
+[node name="CardButton" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(108, 108)
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_21x8f")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/Button"]
+[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/CardButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -76,6 +87,48 @@ grow_vertical = 2
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="Label2" type="Label" parent="HBoxContainer"]
+[node name="KnowButton2" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(216, 216)
 layout_mode = 2
-text = "two"
+size_flags_vertical = 4
+theme = ExtResource("2_biq8x")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_s0rcw")
+text = "Don't know"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+visible = false
+custom_minimum_size = Vector2(0, 432)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="RestartButton" type="Button" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(324, 324)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_21x8f")
+text = "Restart"
+
+[node name="RestartButton2" type="Button" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(324, 324)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_21x8f")
+text = "Restart with unknown"
+autowrap_mode = 3
+
+[node name="BackButton" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+theme = ExtResource("2_biq8x")
+text = "<Back"
