@@ -86,7 +86,12 @@ grow_horizontal = 0
 grow_vertical = 0
 alignment = 1
 
-[node name="Button" type="Button" parent="VBoxContainer"]
+[node name="ShuffleButton" type="CheckButton" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_8twda")
+text = "Shuffle cards?"
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
 custom_minimum_size = Vector2(162, 162)
 layout_mode = 2
 size_flags_horizontal = 4

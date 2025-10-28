@@ -4,6 +4,7 @@ var id: String = "b7507163-6612-455f-81a6-d29eb1634c97"
 var classic = ["Flashcards"]
 var chosenSides: Dictionary
 var cards: Array
+var shuffle = false
 func _ready() -> void:
 	$StatusLabel.visible = true
 	$Label.text = Global.gamemode
@@ -32,7 +33,8 @@ func _ready() -> void:
 	$HTTPRequest.request("https://api.phyotp.dev/multicards/set/"+id)
 	$GraphEdit.connection_request.connect(_connect_node)
 	$GraphEdit.disconnection_request.connect(_disconnect_node)
-	$VBoxContainer/Button.pressed.connect(_start)
+	$VBoxContainer/PlayButton.pressed.connect(_start)
+	$VBoxContainer/ShuffleButton.toggled.connect(func(new): shuffle = new)
 func _on_request_completed(_result, response_code, _headers, body):
 	if response_code == 200:
 		$StatusLabel.visible = false
@@ -67,7 +69,10 @@ func _start():
 
 	new_scene.chosenSides = chosenSides
 	new_scene.cards = cards
-	Global.scene_path.append(self.duplicate())
+	new_scene.shuffle = shuffle
+	var old = preload("res://GamemodeOptions.tscn").instantiate()
+	old.id = id
+	Global.scene_path.append(old)
 	get_tree().current_scene.queue_free()
 	get_tree().root.add_child(new_scene)
 	get_tree().current_scene = new_scene

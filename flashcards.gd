@@ -11,14 +11,18 @@ var index = 0
 var known = []
 var dontKnown = []
 var flipped = false
+var shuffle = false
 func _ready() -> void:
-	print(cards)
+	print(chosenSides)
+	if shuffle: cards.shuffle()
 	_set_card(chosenSides._front)
 	card_button.pressed.connect(_flip_card)
 	k_button.pressed.connect(_next.bind(true))
 	dk_button.pressed.connect(_next.bind(false))
 	$HBoxContainer2/RestartButton.pressed.connect(_restart.bind(false))
 	$HBoxContainer2/RestartButton2.pressed.connect(_restart.bind(true))
+	$HBoxContainer3/Label2.text = str(index+1) + "/" + str(cards.size())
+	$HBoxContainer3/UndoButton.pressed.connect(_undo)
 func _set_card(sides: Array):
 	for child in card_button.get_child(0).get_children():
 		child.queue_free()
@@ -42,22 +46,38 @@ func _next(know: bool):
 	if index < cards.size():
 		_set_card(chosenSides._front)
 		flipped = false
+		$HBoxContainer3/Label2.text = str(index+1) + "/" + str(cards.size())
+		$HBoxContainer3/UndoButton.disabled = index == 0
 	else: 
 		$Label2.text = "You got " + str(all_cards.size()-dontKnown.size()) + " out of " + str(all_cards.size()) + " correct!"
 		$HBoxContainer.visible = false
 		$HBoxContainer2.visible = true
+		$HBoxContainer3/Label2.visible = false
+		$HBoxContainer3/UndoButton.visible = false
 		$HBoxContainer2/RestartButton2.visible = dontKnown.size() > 0
-		
 func _restart(dk: bool):
 	$HBoxContainer2.visible = false
 	$HBoxContainer.visible = true
+	$HBoxContainer3/Label2.visible = true
+	$HBoxContainer3/UndoButton.visible = true
 	$Label2.text = "Click to flip"
 	index = 0
 	if dk:
 		cards = dontKnown
 	else:
 		cards = all_cards
+	if shuffle: cards.shuffle()
+	$HBoxContainer3/Label2.text = str(index+1) + "/" + str(cards.size())
 	known = []
 	dontKnown = []
 	_set_card(chosenSides._front)
 	flipped = false
+	$HBoxContainer3/UndoButton.disabled = true
+func _undo():
+	index -= 1
+	known.erase(cards[index])
+	dontKnown.erase(cards[index])
+	_set_card(chosenSides._front)
+	$HBoxContainer3/UndoButton.disabled = index == 0
+	flipped = false
+	$HBoxContainer3/Label2.text = str(index+1) + "/" + str(cards.size())
