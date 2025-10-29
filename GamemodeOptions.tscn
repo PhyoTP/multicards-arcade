@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c84t6ph516mtp"]
+[gd_scene load_steps=7 format=3 uid="uid://c84t6ph516mtp"]
 
 [ext_resource type="Script" uid="uid://d00wlioymk0sn" path="res://gamemode_options.gd" id="1_8twda"]
 [ext_resource type="Theme" uid="uid://dlxjiwsk6r3y5" path="res://themes/header.tres" id="1_may5p"]
 [ext_resource type="PackedScene" uid="uid://bnckqilaoe73s" path="res://back_button.tscn" id="2_6fuf3"]
 [ext_resource type="Theme" uid="uid://xyo7pwdpgfku" path="res://themes/text.tres" id="3_8twda"]
 [ext_resource type="Theme" uid="uid://fx8rk3uqw885" path="res://themes/big_button.tres" id="4_vntr2"]
+[ext_resource type="PackedScene" uid="uid://bge1j8yqqv03l" path="res://loading_ui.tscn" id="6_cnyha"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -60,20 +61,6 @@ text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StatusLabel" type="Label" parent="."]
-custom_minimum_size = Vector2(576, 432)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -216.0
-offset_right = 145.0
-grow_vertical = 0
-theme = ExtResource("3_8twda")
-text = "Loading..."
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(576, 432)
 layout_mode = 1
@@ -106,3 +93,34 @@ layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("4_vntr2")
 text = "Play"
+
+[node name="StatusLabel" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -432.0
+offset_right = 576.0
+offset_bottom = 4.0
+grow_vertical = 0
+
+[node name="StatusLabel" type="Label" parent="StatusLabel"]
+custom_minimum_size = Vector2(576, 216)
+layout_mode = 0
+offset_right = 576.0
+offset_bottom = 216.0
+grow_vertical = 0
+theme = ExtResource("3_8twda")
+text = "Loading..."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubViewportContainer" parent="StatusLabel" instance=ExtResource("6_cnyha")]
+custom_minimum_size = Vector2(0, 324)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -324.0
+offset_bottom = 0.0
+grow_vertical = 0

@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=3 uid="uid://bl434xcccasjt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s70hg"]
+albedo_color = Color(0.89411765, 0.5803922, 0.105882354, 1)
+roughness = 0.2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_gov4d"]
+material = SubResource("StandardMaterial3D_s70hg")
+
+[sub_resource type="Animation" id="Animation_s70hg"]
+resource_name = "spin"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.2831855, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gov4d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pg7vo"]
+_data = {
+&"RESET": SubResource("Animation_gov4d"),
+&"spin": SubResource("Animation_s70hg")
+}
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.8, 0, 0, 0, -3.4969112e-08, -0.8, 0, 0.8, -3.4969112e-08, -3.0327664e-07, 0, 1.7345402)
+mesh = SubResource("PlaneMesh_gov4d")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.39999998, 0.69282037, -3.0284138e-08, 0, -3.4969112e-08, -0.8, -0.69282037, 0.39999998, -1.7484554e-08, 1.4999998, 0, 0.8685402)
+mesh = SubResource("PlaneMesh_gov4d")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.40000007, 0.6928203, -3.0284138e-08, 0, -3.4969112e-08, -0.8, -0.6928203, -0.40000007, 1.7484558e-08, 1.4999996, 0, -0.8654597)
+mesh = SubResource("PlaneMesh_gov4d")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.8, 1.2079664e-07, -5.280189e-15, 0, -3.4969112e-08, -0.8, -1.2079664e-07, -0.8, 3.4969112e-08, -3.0327664e-07, 0, -1.7324331)
+mesh = SubResource("PlaneMesh_gov4d")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(-0.40000007, -0.6928203, 3.0284138e-08, 0, -3.4969112e-08, -0.8, 0.6928203, -0.40000007, 1.7484558e-08, -1.5000004, 0, -0.8664334)
+mesh = SubResource("PlaneMesh_gov4d")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.39999998, -0.69282037, 3.0284138e-08, 0, -3.4969112e-08, -0.8, 0.69282037, 0.39999998, -1.7484554e-08, -1.5000004, 0, 0.8675668)
+mesh = SubResource("PlaneMesh_gov4d")
+skeleton = NodePath("../..")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.9490912, 0.06521785, -0.30817586, 0.0054785977, 0.9747668, 0.22315794, 0.31495345, -0.21348563, 0.92478544, -3.1961532, -1.1920929e-07, 2.5049455)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pg7vo")
+}
+autoplay = "spin"

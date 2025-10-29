@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://drjcf0qd4faaw"]
+[gd_scene load_steps=6 format=3 uid="uid://drjcf0qd4faaw"]
 
 [ext_resource type="Script" uid="uid://bh2nvtm2dnr7a" path="res://set_select.gd" id="1_b3yos"]
 [ext_resource type="Theme" uid="uid://dlxjiwsk6r3y5" path="res://themes/header.tres" id="2_6r4r8"]
 [ext_resource type="Theme" uid="uid://xyo7pwdpgfku" path="res://themes/text.tres" id="3_hqdio"]
 [ext_resource type="PackedScene" uid="uid://bnckqilaoe73s" path="res://back_button.tscn" id="4_iwm4n"]
+[ext_resource type="PackedScene" uid="uid://bge1j8yqqv03l" path="res://loading_ui.tscn" id="5_7kko7"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -77,3 +78,19 @@ grow_horizontal = 2
 theme = ExtResource("3_hqdio")
 theme_override_font_sizes/font_size = 16
 placeholder_text = "Search for a set..."
+
+[node name="Loading" parent="." instance=ExtResource("5_7kko7")]
+custom_minimum_size = Vector2(0, 324)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -288.0
+offset_top = -216.0
+offset_right = 288.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4

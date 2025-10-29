@@ -4,6 +4,7 @@ extends Control
 var sets = []
 func _ready():
 	status_label.visible = true
+	$Loading.visible = true
 	for child in $ScrollContainer/VBoxContainer.get_children():
 		if child in get_tree().get_nodes_in_group("list_button"):
 			child.queue_free()
@@ -15,6 +16,7 @@ func _ready():
 func _on_request_completed(_result, response_code, _headers, body):
 	if response_code == 200:
 		status_label.visible = false
+		$Loading.visible = false
 		sets = JSON.parse_string(body.get_string_from_utf8())
 		for item in sets:
 			var button = list_button.instantiate()
