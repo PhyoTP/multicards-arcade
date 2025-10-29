@@ -23,6 +23,7 @@ text = "Side"
 horizontal_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
+custom_minimum_size = Vector2(108, 0)
 layout_mode = 2
 theme = ExtResource("1_sbg03")
 theme_override_colors/font_color = Color(0, 0, 0, 1)

@@ -1,7 +1,9 @@
 extends Control
 
-var id: String = "b7507163-6612-455f-81a6-d29eb1634c97"
-var classic = ["Flashcards"]
+var id: String = "ee154f92-b537-490c-829b-c74f89d978ce"
+var mode_categories = {
+	"Flashcards": ["Front","Back", "Hint"]
+}
 var chosenSides: Dictionary
 var cards: Array
 var shuffle = false
@@ -11,24 +13,16 @@ func _ready() -> void:
 	var label = Label.new()
 	label.text = "Attach this..."
 	var offset = 0
-	if Global.gamemode in classic:
-		var qFrame = GraphNode.new()
-		qFrame.title = "Front"
-		qFrame.name = "_front"
-		qFrame.position_offset = Vector2(-576, offset)
-		chosenSides["_front"] = []
-		qFrame.add_child(label)
-		qFrame.set_slot(0, false, 0, Color.DARK_ORANGE, true, 0, Color.DARK_ORANGE)
-		$GraphEdit.add_child(qFrame)
+	for i in mode_categories[Global.gamemode]:
+		var node = GraphNode.new()
+		node.title = i
+		node.name = "_" + i
+		node.position_offset = Vector2(-576, offset)
+		chosenSides["_"+i] = []
+		node.add_child(label.duplicate())
+		node.set_slot(0, false, 0, Color.DARK_ORANGE, true, 0, Color.DARK_ORANGE)
+		$GraphEdit.add_child(node)
 		offset += 64
-		var aFrame = GraphNode.new()
-		aFrame.title = "Back"
-		aFrame.name = "_back"
-		aFrame.position_offset = Vector2(-576, offset)
-		chosenSides["_back"] = []
-		aFrame.set_slot(0, false, 0, Color.DARK_ORANGE, true, 0, Color.DARK_ORANGE)
-		aFrame.add_child(label.duplicate())
-		$GraphEdit.add_child(aFrame)
 	$HTTPRequest.request_completed.connect(_on_request_completed)
 	$HTTPRequest.request("https://api.phyotp.dev/multicards/set/"+id)
 	$GraphEdit.connection_request.connect(_connect_node)
