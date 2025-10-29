@@ -2,7 +2,7 @@ extends Control
 
 var chosenSides: Dictionary = {_Front=["Mixture"], _Back=["Reaction"], _Hint=[]}
 var all_cards: Array = [{ "id": "36C88CA0-3E04-4E61-8C43-9FD2245D6C00", "sides": { "Mixture": "Acid + Metal", "Reaction": "salt + hydrogen gas" } }, { "id": "394B4B9A-71A3-4D62-9638-14FD99930D3D", "sides": { "Mixture": "Acid + Base", "Reaction": "salt + water" } }, { "id": "BD8B41B0-490B-4E34-A778-222AFA3580CF", "sides": { "Mixture": "Acid + metal carbonate", "Reaction": "salt + water + carbon dioxide" } }, { "id": "E612EF36-6DA6-4CB6-ADD2-C3D5AF698DAB", "sides": { "Mixture": "Base + ammonium salt", "Reaction": "salt + water + ammonia gas" } }]
-var cards = all_cards
+var cards: Array
 var index = 0
 @onready var sub_side = preload("res://flashcardsubside.tscn")
 @onready var card_button = $HBoxContainer/CardButton
@@ -14,7 +14,7 @@ var flipped = false
 var shuffle = false
 var hint_shown = false
 func _ready() -> void:
-	print(chosenSides)
+	cards = all_cards
 	if shuffle: cards.shuffle()
 	_set_card(chosenSides._Front)
 	card_button.pressed.connect(_flip_card)
@@ -24,7 +24,7 @@ func _ready() -> void:
 	$HBoxContainer2/RestartButton2.pressed.connect(_restart.bind(true))
 	$HBoxContainer3/Label2.text = str(index+1) + "/" + str(cards.size())
 	$HBoxContainer3/UndoButton.pressed.connect(_undo)
-	if chosenSides._Hint.size() == 0: $HintButton.visible = false
+	$HintButton.visible = chosenSides._Hint.size() > 0
 	$HintButton.pressed.connect(_show_hint)
 func _set_card(sides: Array):
 	for child in card_button.get_child(0).get_children():
@@ -66,7 +66,7 @@ func _next(know: bool):
 		$HBoxContainer3/Label2.visible = false
 		$HBoxContainer3/UndoButton.visible = false
 		$HBoxContainer2/RestartButton2.visible = dontKnown.size() > 0
-		$HintButton.disabled = true
+		$HintButton.visible = false
 	flipped = false
 	hint_shown = false
 func _restart(dk: bool):
@@ -74,6 +74,7 @@ func _restart(dk: bool):
 	$HBoxContainer.visible = true
 	$HBoxContainer3/Label2.visible = true
 	$HBoxContainer3/UndoButton.visible = true
+	$HintButton.visible = chosenSides._Hint.size() > 0
 	$HintButton.disabled = false
 	$Label2.text = "Click to flip"
 	index = 0

@@ -17,18 +17,21 @@ func _ready() -> void:
 		var node = GraphNode.new()
 		node.title = i
 		node.name = "_" + i
-		node.position_offset = Vector2(-576, offset)
+		node.position_offset = Vector2(0, offset)
 		chosenSides["_"+i] = []
 		node.add_child(label.duplicate())
 		node.set_slot(0, false, 0, Color.DARK_ORANGE, true, 0, Color.DARK_ORANGE)
 		$GraphEdit.add_child(node)
 		offset += 64
+	#$GraphEdit.scroll_offset = $GraphEdit.get_child(1).position_offset
+	print($GraphEdit.get_child(1).position_offset)
 	$HTTPRequest.request_completed.connect(_on_request_completed)
 	$HTTPRequest.request("https://api.phyotp.dev/multicards/set/"+id)
 	$GraphEdit.connection_request.connect(_connect_node)
 	$GraphEdit.disconnection_request.connect(_disconnect_node)
 	$VBoxContainer/PlayButton.pressed.connect(_start)
 	$VBoxContainer/ShuffleButton.toggled.connect(func(new): shuffle = new)
+	$GraphEdit.node_selected.connect(func(n): print(n.position_offset))
 func _on_request_completed(_result, response_code, _headers, body):
 	if response_code == 200:
 		$StatusLabel.visible = false
@@ -45,7 +48,7 @@ func _on_request_completed(_result, response_code, _headers, body):
 					var newNode = GraphNode.new()
 					newNode.title = side
 					newNode.name = side
-					newNode.position_offset = Vector2(-216,offset)
+					newNode.position_offset = Vector2(476,offset)
 					offset+=64
 					newNode.add_child(label.duplicate())
 					newNode.set_slot(0, true, 0, Color.DARK_ORANGE, false, 0, Color.DARK_ORANGE)
@@ -62,7 +65,7 @@ func _start():
 	var new_scene = game_scene.instantiate()
 
 	new_scene.chosenSides = chosenSides
-	new_scene.cards = cards
+	new_scene.all_cards = cards
 	new_scene.shuffle = shuffle
 	var old = preload("res://GamemodeOptions.tscn").instantiate()
 	old.id = id
