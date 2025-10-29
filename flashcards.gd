@@ -30,6 +30,7 @@ func _set_card(sides: Array):
 		var new_sub = sub_side.instantiate()
 		new_sub.get_child(0).text = i
 		new_sub.get_child(1).text = cards[index].sides[i]
+		new_sub.num = sides.size()
 		card_button.get_child(0).add_child(new_sub)
 func _flip_card():
 	if not flipped:

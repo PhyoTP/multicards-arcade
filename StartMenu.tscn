@@ -80,19 +80,49 @@ text = "Multi-player"
 autowrap_mode = 3
 clip_text = true
 
-[node name="LinkButton" type="LinkButton" parent="."]
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 144)
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 12
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -225.5
-offset_top = -95.0
-offset_right = 225.5
-offset_bottom = -54.0
+offset_top = -41.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="LinkButton" type="LinkButton" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
 theme = ExtResource("3_7htnq")
-text = "Check out Multicards, the app!"
+text = "Check out the Multicards app!"
 uri = "https:multicards.phyotp.dev"
+
+[node name="AboutButton" type="Button" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("3_7htnq")
+text = "About Multicards"
+
+[node name="About" type="Button" parent="."]
+visible = false
+custom_minimum_size = Vector2(576, 576)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -30.0
+offset_right = 65.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_0d5ky")
+text = "Welcome to Multicards!
+Multicards is an app where you can make multi-dimensional flashcards sets. It has an iOS app and website as well!
+(Click to close)"
+autowrap_mode = 3
