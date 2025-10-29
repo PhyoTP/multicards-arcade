@@ -43,10 +43,17 @@ func _flip_card():
 	flipped = !flipped
 	hint_shown = false
 func _next(know: bool):
+	var tween = get_tree().create_tween().set_ease(Tween.EASE_OUT)
+	var old_card = card_button.duplicate()
+	old_card.size = card_button.size
+	old_card.global_position = card_button.global_position
+	add_child(old_card)
 	if know:
 		known.append(cards[index])
+		tween.tween_property(old_card,"position",Vector2(-576, 240), 0.3)
 	else:
 		dontKnown.append(cards[index])
+		tween.tween_property(old_card,"position",Vector2(1152, 240), 0.3)
 	index += 1
 	if index < cards.size():
 		_set_card(chosenSides._Front)

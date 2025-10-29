@@ -14,6 +14,7 @@ alignment = 1
 script = ExtResource("1_t6ru7")
 
 [node name="Label" type="Label" parent="."]
+custom_minimum_size = Vector2(144, 0)
 layout_mode = 2
 theme = ExtResource("1_slp4h")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -21,6 +22,7 @@ theme_override_font_sizes/font_size = 64
 theme_override_styles/normal = SubResource("StyleBoxFlat_sbg03")
 text = "Side"
 horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="Label2" type="Label" parent="."]
 custom_minimum_size = Vector2(108, 0)

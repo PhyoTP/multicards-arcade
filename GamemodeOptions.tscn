@@ -39,7 +39,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 offset_top = -216.0
 grow_vertical = 0
-scroll_offset = Vector2(0, -216)
+scroll_offset = Vector2(0, -324)
 show_grid = false
 snapping_enabled = false
 right_disconnects = true
@@ -76,10 +76,11 @@ grow_vertical = 0
 alignment = 1
 
 [node name="Label" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(576, 0)
 layout_mode = 2
 theme = ExtResource("3_8twda")
 theme_override_font_sizes/font_size = 28
-text = "Click on the port of the side to disconnect it"
+text = "Click on the right connector to disconnect it"
 autowrap_mode = 3
 
 [node name="ShuffleButton" type="CheckButton" parent="VBoxContainer"]
@@ -88,7 +89,7 @@ theme = ExtResource("3_8twda")
 text = "Shuffle cards?"
 
 [node name="PlayButton" type="Button" parent="VBoxContainer"]
-custom_minimum_size = Vector2(162, 162)
+custom_minimum_size = Vector2(162, 96)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("4_vntr2")

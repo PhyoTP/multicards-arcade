@@ -76,7 +76,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-custom_minimum_size = Vector2(1152, 324)
+custom_minimum_size = Vector2(1056, 324)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -89,7 +89,7 @@ offset_right = 196.5
 offset_bottom = -84.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 108
+theme_override_constants/separation = 64
 alignment = 1
 
 [node name="KnowButton" type="Button" parent="HBoxContainer"]
