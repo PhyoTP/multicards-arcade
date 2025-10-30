@@ -2,11 +2,16 @@ extends Control
 
 var id: String = "ee154f92-b537-490c-829b-c74f89d978ce"
 var mode_categories = {
-	"Flashcards": ["Front","Back", "Hint"]
+	"Flashcards": ["Front","Back", "Hint"],
+	"Match": ["Sides"]
+}
+var mode_settings = {
+	"Flashcards": ["shuffle"],
+	"Match": []
 }
 var chosenSides: Dictionary
 var cards: Array
-var shuffle = false
+var chosenSettings: Dictionary
 func _ready() -> void:
 	$StatusLabel.visible = true
 	$Label.text = Global.gamemode
@@ -30,7 +35,10 @@ func _ready() -> void:
 	$GraphEdit.connection_request.connect(_connect_node)
 	$GraphEdit.disconnection_request.connect(_disconnect_node)
 	$VBoxContainer/PlayButton.pressed.connect(_start)
-	$VBoxContainer/ShuffleButton.toggled.connect(func(new): shuffle = new)
+	if "shuffle" in mode_settings[Global.gamemode]:
+		$VBoxContainer/ShuffleButton.toggled.connect(func(new): chosenSettings.shuffle = new)
+	else:
+		$VBoxContainer/ShuffleButton.visible = false
 	$GraphEdit.node_selected.connect(func(n): print(n.position_offset))
 func _on_request_completed(_result, response_code, _headers, body):
 	if response_code == 200:
@@ -66,7 +74,7 @@ func _start():
 
 	new_scene.chosenSides = chosenSides
 	new_scene.all_cards = cards
-	new_scene.shuffle = shuffle
+	new_scene.chosenSettings = chosenSettings
 	var old = preload("res://GamemodeOptions.tscn").instantiate()
 	old.id = id
 	Global.scene_path.append(old)

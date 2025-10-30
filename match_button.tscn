@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://clmdjcrd0pjem"]
+
+[ext_resource type="Theme" uid="uid://fx8rk3uqw885" path="res://themes/big_button.tres" id="1_8vhxg"]
+[ext_resource type="Script" uid="uid://cgsgrvn5b27tl" path="res://match_button.gd" id="2_14l25"]
+[ext_resource type="PackedScene" uid="uid://dd5piprqwmwj4" path="res://flashcardsubside.tscn" id="2_hqb4y"]
+
+[node name="Button" type="Button"]
+custom_minimum_size = Vector2(108, 108)
+theme = ExtResource("1_8vhxg")
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+script = ExtResource("2_14l25")
+
+[node name="VBoxContainer" parent="." instance=ExtResource("2_hqb4y")]
+custom_minimum_size = Vector2(216, 216)
+layout_mode = 1
+offset_right = 144.0
+offset_bottom = 129.0
+scale = Vector2(0.5, 0.5)

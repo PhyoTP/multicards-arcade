@@ -3,6 +3,7 @@ extends Control
 func _ready() -> void:
 	Global.scene_path.append("res://StartMenu.tscn")
 	$HBoxContainer/FlashcardsButton.pressed.connect(_button_pressed.bind("Flashcards"))
+	$HBoxContainer/MatchButton.pressed.connect(_button_pressed.bind("Match"))
 func _button_pressed(gamemode: String):
 	Global.gamemode = gamemode
 	Global.scene_path.append(self.duplicate())

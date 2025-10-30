@@ -11,11 +11,11 @@ var index = 0
 var known = []
 var dontKnown = []
 var flipped = false
-var shuffle = false
+var chosenSettings: Dictionary = {"shuffle":true}
 var hint_shown = false
 func _ready() -> void:
 	cards = all_cards
-	if shuffle: cards.shuffle()
+	if chosenSettings.shuffle: cards.shuffle()
 	_set_card(chosenSides._Front)
 	card_button.pressed.connect(_flip_card)
 	k_button.pressed.connect(_next.bind(true))
@@ -82,7 +82,7 @@ func _restart(dk: bool):
 		cards = dontKnown
 	else:
 		cards = all_cards
-	if shuffle: cards.shuffle()
+	if chosenSettings.shuffle: cards.shuffle()
 	$HBoxContainer3/Label2.text = str(index+1) + "/" + str(cards.size())
 	known = []
 	dontKnown = []
